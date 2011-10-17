@@ -219,7 +219,7 @@ public class JogoDaVelhaTest {
 	}
 	
 	@Test // adicionado
-	public void deveConfirmarGanhadorXisTransversalColuna() throws Exception {
+	public void deveConfirmarGanhadorXisTransversal1() throws Exception {
 		String[][] tabuleiroInicial = new String[][] {{"X", "", ""}, 
 										  			  {"", "X", ""}, 
 										  			  {"", "", "X"}};
@@ -229,10 +229,30 @@ public class JogoDaVelhaTest {
 	}
 	
 	@Test // adicionado
-	public void deveConfirmarGanhadorBolaTransversalColuna() throws Exception {
+	public void deveConfirmarGanhadorXisTransversal2() throws Exception {
+		String[][] tabuleiroInicial = new String[][] {{"", "", "X"}, 
+										  			  {"", "X", ""}, 
+										  			  {"X", "", ""}};
+		boolean existeGanhador = JogoDaVelha.existeGanhador(tabuleiroInicial, "X");
+		
+		assertTrue(existeGanhador);
+	}
+	
+	@Test // adicionado
+	public void deveConfirmarGanhadorBolaTransversal1Bola() throws Exception {
 		String[][] tabuleiroInicial = new String[][] {{"O", "", ""}, 
 										  			  {"", "O", ""}, 
 										  			  {"", "", "O"}};
+		boolean existeGanhador = JogoDaVelha.existeGanhador(tabuleiroInicial, "O");
+		
+		assertTrue(existeGanhador);
+	}
+	
+	@Test // adicionado
+	public void deveConfirmarGanhadorXisTransversal2Bola() throws Exception {
+		String[][] tabuleiroInicial = new String[][] {{"", "", "O"}, 
+										  			  {"", "O", ""}, 
+										  			  {"O", "", ""}};
 		boolean existeGanhador = JogoDaVelha.existeGanhador(tabuleiroInicial, "O");
 		
 		assertTrue(existeGanhador);
