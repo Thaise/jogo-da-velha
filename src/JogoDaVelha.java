@@ -10,8 +10,8 @@ public class JogoDaVelha {
 	}
 
 	public static void jogar(String[][] tabuleiro, int i, int j, String jogador) throws JogoDaVelhaException {
-		verificaPosicaoForaDoTabuleiro(tabuleiro, i, j);/*chama o método criado a seguir,
-		 												mas ambos estão dentro do método jogar*/
+		verificaPosicaoForaDoTabuleiro(tabuleiro, i, j);/*chama o mï¿½todo criado a seguir,
+		 												mas ambos estï¿½o dentro do mï¿½todo jogar*/
 		
 		if("".equals(tabuleiro[i][j])){
 			tabuleiro[i][j] = jogador;
@@ -20,7 +20,7 @@ public class JogoDaVelha {
 		}
 	}
 
-	private static void verificaPosicaoForaDoTabuleiro(String[][] tabuleiro, int i, int j)//criando o método que eu chamei anteriormente
+	private static void verificaPosicaoForaDoTabuleiro(String[][] tabuleiro, int i, int j)//criando o mï¿½todo que eu chamei anteriormente
 			throws JogoDaVelhaException {
 		
 		if(i >= tabuleiro.length || j >= tabuleiro.length){
@@ -65,6 +65,10 @@ public class JogoDaVelha {
 			
 			return true;
 		
+		}else if("X".equals(jogador) && tabuleiro[0][2] == jogador && tabuleiro[1][1] == jogador && tabuleiro[2][0] == jogador){
+			
+			return true;
+		
 		}
 	
 		//CONFIRMANDO GANHADOR BOLA
@@ -99,6 +103,10 @@ public class JogoDaVelha {
 		}
 		//transversal
 		else if("O".equals(jogador) && tabuleiro[0][0] == jogador && tabuleiro[1][1] == jogador && tabuleiro[2][2] == jogador){
+			
+			return true;
+		
+		}else if("O".equals(jogador) && tabuleiro[0][2] == jogador && tabuleiro[1][1] == jogador && tabuleiro[2][0] == jogador){
 			
 			return true;
 		
