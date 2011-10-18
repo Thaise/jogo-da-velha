@@ -1,17 +1,83 @@
+import java.util.Scanner;
+import java.util.Vector;
+
+
 public class JogoDaVelha {
+	
+	public static void main(String[] args) throws JogoDaVelhaException{
+		
+		String[][] tabuleiro = inicializar();
+		
+		Scanner entrada = new Scanner(System.in);
+		
+		while(true){
+			
+			System.out.println("Faça uma jogada: ");
+			String passandoJogada = entrada.nextLine();
+			
+			Vector jogadaVector = interpretarJogada(passandoJogada);
+	
+			String jogador = (String) jogadaVector.get(0);
+			int linha = (Integer) jogadaVector.get(1);
+			int coluna = (Integer) jogadaVector.get(2);
+			
+			jogar(tabuleiro, linha, coluna, jogador);
+			
+			mostrarTabuleiro(tabuleiro);
+			
+			boolean jogadorXisGanhou = existeGanhador(tabuleiro, "X");
+			boolean jogadorBolaGanhou = existeGanhador(tabuleiro, "O");
+			
+			if(jogadorXisGanhou || jogadorBolaGanhou){
+				System.out.println("Fim do jogo!");
+			}else{
+				
+			}
+		}
+		
+	}
+	
+	public static void mostrarTabuleiro(String[][]tabuleiro){
+		
+		for(int i = 0; i < tabuleiro.length; i++){
+			for(int j = 0; j < tabuleiro.length; j++){
+				System.out.print(tabuleiro[i][j]+ " | ");
+			}
+			System.out.println("");
+		}
+	}
+	
+	
+	public static Vector interpretarJogada(String passandoJogada) {
+		
+		Vector jogada = new Vector();
+		
+		String[] jogadaArray = passandoJogada.split(" ");
+		
+		int linha = Integer.parseInt(jogadaArray[1]);
+		int coluna = Integer.parseInt(jogadaArray[1]);
+
+		jogada.add(jogadaArray[0]);
+		jogada.add(linha);
+		jogada.add(coluna);
+		
+		return jogada;
+	}
+
 
 	public static String[][] inicializar() {
 		
 		String [][] tabuleiroEsperado = {{"", "", ""},
-								 		 {"", "", ""},
-								 		 {"", "", ""}};							
+						 {"", "", ""},
+						 {"", "", ""}};							
 		
 		return tabuleiroEsperado;
 	}
+	
 
 	public static void jogar(String[][] tabuleiro, int i, int j, String jogador) throws JogoDaVelhaException {
-		verificaPosicaoForaDoTabuleiro(tabuleiro, i, j);/*chama o m�todo criado a seguir,
-		 												mas ambos est�o dentro do m�todo jogar*/
+		verificaPosicaoForaDoTabuleiro(tabuleiro, i, j);/*chama o método criado a seguir,
+		 												mas ambos estão dentro do método jogar*/
 		
 		if("".equals(tabuleiro[i][j])){
 			tabuleiro[i][j] = jogador;
@@ -20,7 +86,7 @@ public class JogoDaVelha {
 		}
 	}
 
-	private static void verificaPosicaoForaDoTabuleiro(String[][] tabuleiro, int i, int j)//criando o m�todo que eu chamei anteriormente
+	private static void verificaPosicaoForaDoTabuleiro(String[][] tabuleiro, int i, int j)//criando o método que eu chamei anteriormente
 			throws JogoDaVelhaException {
 		
 		if(i >= tabuleiro.length || j >= tabuleiro.length){
